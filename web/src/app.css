@@ -1,0 +1,40 @@
+.app-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1em;
+}
+
+.app-page {
+  padding: 60px 16px 10px 16px !important;
+}
+.app-page-nopadding {
+  padding: 60px 0px 10px 0px !important;
+}
+
+.app-back-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-news-item {
+  position: relative;
+}
+.app-news-item > .app-click-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  cursor: pointer;
+  top:0;
+  left:0;
+}
+
+.app-web-view {
+  width: 100%;
+}
+
+.media-left {
+  overflow: hidden;
+}
