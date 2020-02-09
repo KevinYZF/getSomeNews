@@ -9,7 +9,6 @@ interface State {
   cSourceList: string[]
 }
 
-let forceUpdate = true;
 
 @inject('appStorage')
 @observer
@@ -29,8 +28,7 @@ class SelectSourcePage extends React.PureComponent<StoreProps, State> {
 
   private async _init() {
     await this.props.appStorage!.resumeSourceList();
-    await this.props.appStorage!.getSources(forceUpdate);
-    forceUpdate = false;
+    await this.props.appStorage!.getSources();
     this._weiboSource = await this.props.appStorage!.getWeiboSourceList();
     const wSourceList = this._weiboSource.map(ele => ele.name);
     this.props.appStorage!.getCustomSourceList();

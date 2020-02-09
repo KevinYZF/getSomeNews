@@ -122,6 +122,12 @@ export default class AppStorage {
 
   public async getSources(forceUpdate:boolean = false) {
     const lastUpdateDate = await localDB.getValue('lastUpdateDate');
+    
+    if (localDB.needForceUpdate) {
+      forceUpdate = true;
+      localDB.needForceUpdate = false;
+    }
+
     if (!forceUpdate) {
       if (lastUpdateDate) {
         const now = new Date().getTime();

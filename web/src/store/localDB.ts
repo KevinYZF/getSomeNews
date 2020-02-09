@@ -7,6 +7,7 @@ export default class AppStorageLocal extends Dexie {
   private weiboSource: Dexie.Table<IWeiboSource, number>;
   private resource: Dexie.Table<IResource, number>;
   private miscKeyVal: Dexie.Table<IMiscKeyVal, string>;
+  public needForceUpdate: boolean = false;
 
   constructor() {
     super('AppStorageLocal');
@@ -74,6 +75,10 @@ export default class AppStorageLocal extends Dexie {
   public async loadSourceListFromFile() {
     const res = await fetch(Source_List_File_Path);
     const data: any = await res.json();
+    const currentSourceCount = await this.weiboSource.count();
+    //New source added
+    if (data.weiboSources.length !== currentSourceCount) 
+      this.needForceUpdate = true;
     await this.weiboSource.clear();
     await this.weiboSource.bulkAdd(data.weiboSources);
   }
