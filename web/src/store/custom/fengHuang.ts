@@ -20,7 +20,7 @@ export default class fengHuang extends CustomSource {
         console.log(error);
         return;
       }
-      const rootNode = dom[2].children[3].children[1].children[5].children[0];
+      const rootNode = dom[2].children[3].children[1].children[4].children[0];
       const type1Rst = this.type1(rootNode.children[2]);
       rst = rst.concat(type1Rst);
       const type2Rst = this.type2(rootNode.children[3]);
